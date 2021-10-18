@@ -1,4 +1,5 @@
 import React from "react";
+import { Feather } from "@expo/vector-icons";
 import Accessory from "../../components/Accessory";
 import BackButton from "../../components/BackButton";
 import ImageSlider from "../../components/ImageSlider";
@@ -21,18 +22,30 @@ import {
   Rent,
   Period,
   Price,
-  About,
   Acessories,
+  RentalPeriod,
+  CalendarIcon,
+  DateInfo,
+  DateTitle,
+  DateValue,
+  RentalPrice,
+  RentalPriceLabel,
+  RentalPriceDetails,
+  RentalPriceQuote,
+  RentalPriceTotal,
   Footer
 } from "./styles";
 import Button from "../../components/Button";
-import { useNavigation } from "@react-navigation/core";
+import { RFValue } from "react-native-responsive-fontsize";
+import { useTheme } from "styled-components";
+import { useNavigation } from "@react-navigation/native";
 
-const CarDetails: React.FC = () => {
+const SchedulingDetails: React.FC = () => {
+  const theme = useTheme();
   const navigation = useNavigation();
 
   function handleConfirm() {
-    navigation.navigate("Scheduling");
+    navigation.navigate("SchedulingComplete");
   }
 
   return (
@@ -69,19 +82,50 @@ const CarDetails: React.FC = () => {
           <Accessory name="2 pessoas" icon={PeopleSvg} />
         </Acessories>
 
-        <About>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
-          laboriosam culpa accusamus eaque, assumenda molestias quaerat quas
-          neque dolor esse iste officiis provident, vitae fugiat repellat vero,
-          saepe nulla itaque.
-        </About>
+        <RentalPeriod>
+          <CalendarIcon>
+            <Feather
+              name="calendar"
+              size={RFValue(24)}
+              color={theme.colors.shape}
+            />
+          </CalendarIcon>
+
+          <DateInfo>
+            <DateTitle>DE</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+
+          <Feather
+            name="chevron-right"
+            size={RFValue(15)}
+            color={theme.colors.shape}
+          />
+
+          <DateInfo>
+            <DateTitle>ATÉ</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+        </RentalPeriod>
+
+        <RentalPrice>
+          <RentalPriceLabel>TOTAL</RentalPriceLabel>
+          <RentalPriceDetails>
+            <RentalPriceQuote>R$ 582 x3 diárias</RentalPriceQuote>
+            <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+          </RentalPriceDetails>
+        </RentalPrice>
       </Content>
 
       <Footer>
-        <Button title="Escolher período do aluguel" onPress={handleConfirm} />
+        <Button
+          title="Alugar agora"
+          color={theme.colors.success}
+          onPress={handleConfirm}
+        />
       </Footer>
     </Container>
   );
 };
 
-export default CarDetails;
+export default SchedulingDetails;

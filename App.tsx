@@ -12,10 +12,10 @@ import {
   Archivo_600SemiBold
 } from "@expo-google-fonts/archivo";
 
-import CarDetails from "./src/screens/CarDetails";
 import AppLoading from "expo-app-loading";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
+import { Routes } from "./src/routes";
 
 export default function App() {
   const [fonstLoaded] = useFonts({
@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CarDetails />
+      <Routes />
     </ThemeProvider>
   );
 }
