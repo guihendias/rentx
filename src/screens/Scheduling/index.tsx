@@ -25,6 +25,10 @@ const Scheduling: React.FC = () => {
   const theme = useTheme();
   const navigation = useNavigation();
 
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   function handleConfirm() {
     navigation.navigate("SchedulingDetails");
   }
@@ -34,7 +38,7 @@ const Scheduling: React.FC = () => {
       <StatusBar style="light" translucent backgroundColor="transparent" />
 
       <Header>
-        <BackButton color={theme.colors.shape} onPress={() => {}} />
+        <BackButton color={theme.colors.shape} onPress={handleGoBack} />
 
         <Title>
           Esolha uma{"\n"}data de início e{"\n"}fim de aluguel

@@ -44,6 +44,10 @@ const SchedulingDetails: React.FC = () => {
   const theme = useTheme();
   const navigation = useNavigation();
 
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   function handleConfirm() {
     navigation.navigate("SchedulingComplete");
   }
@@ -51,7 +55,7 @@ const SchedulingDetails: React.FC = () => {
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={handleGoBack} />
       </Header>
 
       <ImageSlider
