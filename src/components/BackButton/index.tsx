@@ -9,11 +9,11 @@ interface Props extends BorderlessButtonProps {
   color?: string;
 }
 
-const BackButton: React.FC<Props> = ({ color }) => {
+const BackButton: React.FC<Props> = ({ color, ...rest }) => {
   const theme = useTheme();
 
   return (
-    <Container>
+    <Container {...rest}>
       <MaterialIcons
         name="chevron-left"
         size={24}

@@ -19,8 +19,8 @@ import {
   Footer
 } from "./styles";
 import Button from "../../components/Button";
-import { useNavigation } from "@react-navigation/core";
-import { useRoute } from "@react-navigation/native";
+
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { CarDTO } from "../../dtos/CarDTO";
 import { getAccessoryIcon } from "../../utils/getAcessoryIcon";
 
@@ -35,6 +35,7 @@ const CarDetails: React.FC = () => {
 
   function handleGoBack() {
     navigation.goBack();
+    console.log("presed");
   }
 
   function handleConfirm() {

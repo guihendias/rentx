@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "styled-components";
 import BackButton from "../../components/BackButton";
-import Calendar from "../../components/Calendar";
+import Calendar, { DayProps, MarkedDateProps } from "../../components/Calendar";
 
 import ArrowSvg from "../../assets/arrow.svg";
 
@@ -20,8 +20,16 @@ import {
 import { StatusBar } from "expo-status-bar";
 import Button from "../../components/Button";
 import { useNavigation } from "@react-navigation/core";
+import { useState } from "react";
+import { generateInterval } from "../../components/Calendar/generateInterval";
 
 const Scheduling: React.FC = () => {
+  const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
+    {} as DayProps
+  );
+  const [markedDates, setMarkedDates] = useState<MarkedDateProps>(
+    {} as MarkedDateProps
+  );
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -31,6 +39,21 @@ const Scheduling: React.FC = () => {
 
   function handleConfirm() {
     navigation.navigate("SchedulingDetails");
+  }
+
+  function handleChangeDate(date: DayProps) {
+    let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
+    let end = date;
+
+    if (start.timestamp > end.timestamp) {
+      start = end;
+      end = start;
+    }
+
+    setLastSelectedDate(end);
+    const interval = generateInterval(start, end);
+
+    setMarkedDates(interval);
   }
 
   return (
@@ -64,7 +87,7 @@ const Scheduling: React.FC = () => {
       </Header>
 
       <Content>
-        <Calendar />
+        <Calendar markedDates={markedDates} onDayPress={handleChangeDate} />
       </Content>
 
       <Footer>
