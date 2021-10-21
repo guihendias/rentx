@@ -39,7 +39,7 @@ const CarDetails: React.FC = () => {
   }
 
   function handleConfirm() {
-    navigation.navigate("Scheduling");
+    navigation.navigate("Scheduling", { car });
   }
 
   return (
