@@ -3,13 +3,6 @@ import Accessory from "../../components/Accessory";
 import BackButton from "../../components/BackButton";
 import ImageSlider from "../../components/ImageSlider";
 
-import SpeedSvg from "../../assets/speed.svg";
-import AccelerationSvg from "../../assets/acceleration.svg";
-import ForceSvg from "../../assets/force.svg";
-import GasolineSvg from "../../assets/gasoline.svg";
-import ExchangeSvg from "../../assets/exchange.svg";
-import PeopleSvg from "../../assets/people.svg";
-
 import {
   Container,
   Header,
@@ -29,6 +22,7 @@ import Button from "../../components/Button";
 import { useNavigation } from "@react-navigation/core";
 import { useRoute } from "@react-navigation/native";
 import { CarDTO } from "../../dtos/CarDTO";
+import { getAccessoryIcon } from "../../utils/getAcessoryIcon";
 
 interface Params {
   car: CarDTO;
@@ -73,7 +67,7 @@ const CarDetails: React.FC = () => {
             <Accessory
               key={accessory.type}
               name={accessory.name}
-              icon={SpeedSvg}
+              icon={getAccessoryIcon(accessory.type)}
             />
           ))}
         </Acessories>

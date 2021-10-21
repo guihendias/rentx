@@ -33,7 +33,6 @@ export const Name = styled.Text`
 export const About = styled.View`
   flex-direction: row;
   align-items: flex-end;
-  justify-content: space-between;
 
   margin-top: 16px;
 `;
@@ -55,7 +54,9 @@ export const Price = styled.Text`
   font-size: ${RFValue(15)}px;
 `;
 
-export const Type = styled.View``;
+export const Type = styled.View`
+  margin-left: 16px;
+`;
 
 export const CarImage = styled.Image`
   width: 167px;
