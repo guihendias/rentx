@@ -63,7 +63,7 @@ const Scheduling: React.FC = () => {
     }
     navigation.navigate("SchedulingDetails", {
       car,
-      date: Object.keys(markedDates)
+      dates: Object.keys(markedDates)
     });
   }
 
