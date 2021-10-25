@@ -128,7 +128,11 @@ const Scheduling: React.FC = () => {
       </Content>
 
       <Footer>
-        <Button title="Confirmar" onPress={handleConfirm} />
+        <Button
+          title="Confirmar"
+          enabled={!!rentalPeriod.startFormatted}
+          onPress={handleConfirm}
+        />
       </Footer>
     </Container>
   );
