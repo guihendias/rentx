@@ -8,6 +8,8 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background_secondary};
+
+  padding-top: ${getStatusBarHeight() + 32}px;
 `;
 
 export const Header = styled.View`
@@ -15,27 +17,19 @@ export const Header = styled.View`
   justify-content: space-between;
   align-items: center;
 
-  /* position: absolute; */
-  margin-top: ${getStatusBarHeight() + 18}px;
+  position: absolute;
+  top: 8px;
+  left: 0;
   margin-left: 24px;
 `;
-
-export const Content = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    padding: 24,
-    alignItems: "center"
-  },
-  showsVerticalScrollIndicator: false
-})``;
 
 export const Details = styled.View`
   width: 100%;
 
+  margin-top: 16px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  margin-top: 38px;
 `;
 
 export const Description = styled.View``;
