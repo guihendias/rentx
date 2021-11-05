@@ -9,12 +9,14 @@ interface Props extends RectButtonProps {
   title: string;
   color?: string;
   loading?: boolean;
+  light?: boolean;
 }
 
 const Button: React.FC<Props> = ({
   title,
   color,
   loading = false,
+  light = false,
   enabled,
   ...rest
 }) => {
@@ -30,7 +32,7 @@ const Button: React.FC<Props> = ({
       {loading ? (
         <ActivityIndicator color={theme.colors.shape} />
       ) : (
-        <Title>{title}</Title>
+        <Title light={light}>{title}</Title>
       )}
     </Container>
   );
