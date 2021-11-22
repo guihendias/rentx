@@ -21,11 +21,13 @@ import {
   Form,
   ButtonContainer
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigation = useNavigation();
   const theme = useTheme();
 
   async function handleSignIn() {
@@ -45,6 +47,10 @@ const SignIn: React.FC = () => {
         Alert.alert("Erro na autenticação", "Verifique as credenciais");
       }
     }
+  }
+
+  function handleCreateAccount() {
+    navigation.navigate("SignUpFirstStep");
   }
 
   return (
@@ -88,7 +94,7 @@ const SignIn: React.FC = () => {
             <Button
               title="Criar conta gratuita"
               color={theme.colors.background_secondary}
-              onPress={() => {}}
+              onPress={handleCreateAccount}
               light
               enabled={false}
               loading={false}
