@@ -55,7 +55,7 @@ const Splash: React.FC = () => {
   function startApp() {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Home" }]
+      routes: [{ name: "SignIn" }]
     });
   }
 
