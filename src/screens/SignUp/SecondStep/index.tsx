@@ -19,10 +19,11 @@ import {
   Form,
   FormTitle
 } from "./styles";
-import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import PasswordInput from "../../../components/PasswordInput";
+
 import { useTheme } from "styled-components";
+import api from "../../../services/api";
 
 interface Params {
   user: {
@@ -46,13 +47,31 @@ const SecondStep: React.FC = () => {
     navigation.goBack();
   }
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!password || !passwordConfirm) {
       return Alert.alert("Informe a senha e sua confirmação.");
     }
 
     if (password !== passwordConfirm) {
       return Alert.alert("As senhas não são iguais.");
+    }
+
+    try {
+      await api.post("/users", {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password
+      });
+
+      navigation.navigate("Confirmation", {
+        title: "Conta Criada!",
+        nextScreenRoute: "SignIn",
+        message: "Agora é só fazer login\ne aproveitar"
+      });
+    } catch (err) {
+      console.log(err);
+      Alert.alert("Opa", "Não foi possível cadastrar");
     }
   }
 

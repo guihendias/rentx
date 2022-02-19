@@ -85,6 +85,8 @@ const FirstStep: React.FC = () => {
               keyboardType="email-address"
               onChangeText={setEmail}
               value={email}
+              autoCapitalize="none"
+              autoCorrect={false}
             />
 
             <Input
