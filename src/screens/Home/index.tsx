@@ -65,19 +65,28 @@ const Home: React.FC = () => {
   const theme = useTheme();
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchCars() {
       try {
         const response = await api.get("/cars");
-        setCars(response.data);
+        if (isMounted) {
+          setCars(response.data);
+        }
         console.log(response);
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchCars();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   function handleCarDetails(car: CarDTO) {
